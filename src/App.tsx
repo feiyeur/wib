@@ -2,9 +2,7 @@ import './App.scss'
 import Menu from './pages/Menu'
 
 function App() {
-  return (
-    <Menu/>
-  )
+  return <Menu />
 }
 
 export default App

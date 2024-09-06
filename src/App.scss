@@ -1,9 +1,9 @@
 :root {
   font-family: sans-serif;
-  line-height: .9;
+  line-height: 0.9;
   font-size: 5vh;
   overflow: hidden;
-  
+
   color: #fff;
   background-color: #000;
 
@@ -13,19 +13,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   flex-shrink: 0;
-  user-select: none!important;
-  -webkit-user-drag: none!important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
 }
 
 #wii {
   position: relative;
   height: 100vh;
-  &>div{
+  & > div {
     position: absolute;
     left: 0;
     top: 0;
