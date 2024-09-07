@@ -5,8 +5,11 @@ import { onCleanup, onMount } from 'solid-js'
 export default {
   name: 'Menu',
   component: (b) => {
-    import('./Menu.scss')
-    onMount(() => console.log('menu: hi'))
+    onMount(async () => {
+      await import('./Menu.scss')
+      b.ready()
+      console.log('menu: hi')
+    })
     onCleanup(() => console.log('menu: bye'))
     return (
       <>

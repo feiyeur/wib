@@ -6,26 +6,18 @@ export default {
   name: 'Boot',
   visible: false,
   component: (b) => {
-    import('./Boot.scss')
     let bootRef!: HTMLDivElement
     let continueRef!: HTMLParagraphElement
     let continuable = false
     let tl: gsap.core.Timeline
-    onMount(() => {
+    onMount(async () => {
+      await import('./Boot.scss')
+      b.ready()
       tl = gsap
         .timeline()
         .set(continueRef, {
           opacity: 0,
         })
-        .fromTo(
-          bootRef,
-          {
-            opacity: 0,
-          },
-          {
-            opacity: 1,
-          },
-        )
         .to(
           continueRef,
           {
@@ -37,7 +29,7 @@ export default {
               continuable = true
             },
           },
-          '+=1',
+          '1.5',
         )
     })
 
