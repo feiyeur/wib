@@ -1,9 +1,9 @@
 import { createSignal } from 'solid-js'
 import WiiAppWrapper from './components/WiiApp'
-import Menu from './pages/Menu'
+import Boot from './pages/Boot'
 
 function App() {
-  const [currentApp, setCurrentApp] = createSignal(Menu)
+  const [currentApp, setCurrentApp] = createSignal(Boot)
   return (
     <WiiAppWrapper
       app={currentApp()}
