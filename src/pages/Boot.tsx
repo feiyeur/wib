@@ -47,7 +47,7 @@ export default {
             opacity: 0,
             ease: Power2.easeIn,
             onComplete: () => {
-              setTimeout(() => import('./Menu').then((a) => b.launch(a.default)), 1000)
+              setTimeout(() => import('./Home').then((a) => b.launch(a.default)), 1000)
             },
           })
         }}

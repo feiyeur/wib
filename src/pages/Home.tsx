@@ -3,10 +3,10 @@ import { WiiApp } from '../components/WiiApp'
 import { onCleanup, onMount } from 'solid-js'
 
 export default {
-  name: 'Menu',
+  name: 'Home Menu',
   component: (b) => {
     onMount(async () => {
-      await import('./Menu.scss')
+      await import('./Home.scss')
       b.ready()
       console.log('menu: hi')
     })
