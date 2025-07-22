@@ -39,6 +39,8 @@ export default {
         class="boot"
         onMouseDown={() => {
           if (!continuable) return
+          continuable = false
+
           tl.clear()
           gsap.set(continueRef, {
             opacity: 0,
