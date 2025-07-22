@@ -1,5 +1,5 @@
 import { onMount } from 'solid-js'
-import { WiiApp } from '../components/WiiApp'
+import { WiiApp } from '../libs/WiiApp'
 import gsap, { Power2 } from 'gsap'
 
 export default {

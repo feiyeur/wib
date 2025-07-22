@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import WiiAppWrapper from './components/WiiApp'
+import WiiAppWrapper from './libs/WiiApp'
 import Boot from './pages/Boot'
 
 function App() {

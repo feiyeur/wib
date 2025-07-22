@@ -1,4 +1,4 @@
-import { WiiApp } from '../components/WiiApp'
+import { WiiApp } from '../libs/WiiApp'
 
 export default {
   name: 'Test',

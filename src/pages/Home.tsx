@@ -1,5 +1,5 @@
 import Cursor from '../components/Cursor'
-import { WiiApp } from '../components/WiiApp'
+import { WiiApp } from '../libs/WiiApp'
 import { onCleanup, onMount } from 'solid-js'
 
 export default {
