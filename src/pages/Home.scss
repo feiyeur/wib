@@ -1,12 +1,32 @@
+@mixin useResponsiveAspr($ratio-wide, $ratio-wide-h, $ratio-compact, $ratio-compact-w) {
+  aspect-ratio: $ratio-wide;
+  @media (min-aspect-ratio: $ratio-wide) {
+    width: auto;
+    height: $ratio-wide-h;
+  }
+  @media (min-aspect-ratio: $ratio-compact) and (max-aspect-ratio: $ratio-wide) {
+    width: $ratio-compact-w;
+    height: auto;
+  }
+  @media (max-aspect-ratio: $ratio-compact) {
+    width: $ratio-compact-w;
+    height: auto;
+    aspect-ratio: $ratio-compact;
+  }
+}
+
+$channels-height: 73%;
+
 .menu {
-  display: flex;
-  flex-direction: column;
   background: #cecfd7;
 
   --menu-border: 0.09rem solid #34beed;
 }
 .channels {
-  height: 73%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: $channels-height;
   filter: drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.2));
   background: url('/menu-bg.png') repeat;
   background-size: auto 0.176rem;
@@ -14,20 +34,24 @@
   display: flex;
 }
 .channel-page {
-  display: grid;
-  padding: 1.6rem 2.9rem 0.4rem;
-  width: 100vw;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 33.3333%);
-  gap: 0;
+  $padding-x: 8vw;
+
+  display: flex;
+  flex-direction: row;
+  padding: 1.6rem $padding-x 0.4rem;
+  & > div {
+    width: calc(100vw - $padding-x * 2);
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(3, 33.3333%);
+    gap: 0;
+    align-items: center;
+    justify-items: center;
+  }
 }
 .channel {
   position: relative;
-  max-width: 7.7rem;
-  min-width: 5.7rem;
-
-  // height: 4.1rem;
-  // aspect-ratio: 1462/796;
+  @include useResponsiveAspr(16/9, 100%, 4/3, 100%);
   &::before,
   &::after {
     content: '';
@@ -79,7 +103,10 @@
   }
 }
 .navs {
-  flex-grow: 1;
+  position: absolute;
+  top: $channels-height;
+  width: 100%;
+  height: calc(100% - $channels-height);
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -132,6 +159,42 @@
       }
     }
   }
+}
+.channel-full-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background: #000;
+  opacity: 0;
+  & > .channel {
+    min-width: unset;
+    max-width: unset;
+    width: 76%;
+    height: 76%;
+  }
+}
+.channel-full {
+  min-width: unset;
+  max-width: unset;
+
+  background: white;
+
+  mask-image: url('/menu-channel.png');
+  mask-size: 98% 98%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  .buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background: white;
+    border-top: 0.12rem solid #000;
+  }
+
+  @include useResponsiveAspr(16.7/9, 98vh, 4/3, 98vw);
 }
 
 @keyframes test {
