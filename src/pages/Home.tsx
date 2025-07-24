@@ -2,6 +2,7 @@ import gsap, { Power3 } from 'gsap'
 import Cursor from '../components/Cursor'
 import { WiiApp } from '../libs/WiiApp'
 import { createEffect, createSignal, For, JSX, onCleanup, onMount } from 'solid-js'
+import Button from '../components/Button'
 
 interface WiiChannel {
   app: WiiApp
@@ -95,8 +96,13 @@ function ChannelFullscreenLayer(props: ChannelFullscreenLayerProps) {
       ref={ref}
       style={{ 'pointer-events': props.channel ? 'all' : 'none' }}
     >
-      <div class="channel-full" onMouseDown={() => props.onCloseRequest && props.onCloseRequest()}>
-        <div class="buttons">button</div>
+      <div class="channel-full">
+        <div class="buttons">
+          <Button onMouseDown={() => props.onCloseRequest && props.onCloseRequest()}>
+            Wii Menu
+          </Button>
+          <Button onMouseDown={() => props.onCloseRequest && props.onCloseRequest()}>Start</Button>
+        </div>
       </div>
     </div>
   )

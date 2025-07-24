@@ -1,0 +1,13 @@
+.button {
+  border: none;
+  outline: none;
+  padding: 0;
+
+  font-size: inherit;
+  height: 2.66em;
+
+  background: center / contain no-repeat url('/textures/btn.png');
+  aspect-ratio: 364/99;
+  border-radius: 99em;
+  overflow: hidden;
+}

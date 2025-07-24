@@ -7,20 +7,24 @@
   @media (min-aspect-ratio: $ratio-compact) and (max-aspect-ratio: $ratio-wide) {
     width: $ratio-compact-w;
     height: auto;
+    font-size: 2.7vw;
   }
   @media (max-aspect-ratio: $ratio-compact) {
     width: $ratio-compact-w;
     height: auto;
     aspect-ratio: $ratio-compact;
+    font-size: 2.7vw;
   }
 }
 
 $channels-height: 73%;
 
+:root {
+  --menu-border: 0.09em solid #34beed;
+}
+
 .menu {
   background: #cecfd7;
-
-  --menu-border: 0.09rem solid #34beed;
 }
 .channels {
   position: absolute;
@@ -181,7 +185,7 @@ $channels-height: 73%;
   background: white;
 
   mask-image: url('/menu-channel.png');
-  mask-size: 98% 98%;
+  mask-size: 100% 100%;
   mask-repeat: no-repeat;
   mask-position: center;
 
@@ -191,10 +195,20 @@ $channels-height: 73%;
     width: 100%;
     height: 25%;
     background: white;
-    border-top: 0.12rem solid #000;
+    border-top: 0.12em solid #000;
+
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    padding: 0.68em 6.6em 0;
   }
 
-  @include useResponsiveAspr(16.7/9, 98vh, 4/3, 98vw);
+  .button {
+    border: var(--menu-border);
+  }
+
+  @include useResponsiveAspr(16.7/9, 96vh, 4/3, 96vw);
 }
 
 @keyframes test {
