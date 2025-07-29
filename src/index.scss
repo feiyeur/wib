@@ -1,7 +1,9 @@
+@use 'sass:math';
+@use 'styles/lib';
+
 :root {
   font-family: sans-serif;
   line-height: 0.9;
-  font-size: 5vh;
   overflow: hidden;
 
   color: #fff;
@@ -11,6 +13,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @include lib.useDynamicFontSize(math.div(16, 9), 5vh, 2.8vw, math.div(4, 3), 3.6vw);
 }
 
 * {

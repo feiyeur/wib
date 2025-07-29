@@ -1,0 +1,32 @@
+@mixin useDynamicFontSize(
+  $ratio-wide,
+  $ratio-wide-scale,
+  $ratio-mid-scale,
+  $ratio-compact,
+  $ratio-compact-scale
+) {
+  font-size: $ratio-wide-scale;
+  @media (min-aspect-ratio: $ratio-compact) and (max-aspect-ratio: $ratio-wide) {
+    font-size: $ratio-mid-scale;
+  }
+  @media (max-aspect-ratio: $ratio-compact) {
+    font-size: $ratio-compact-scale;
+  }
+}
+
+@mixin useDynamicAspr($ratio-wide, $ratio-wide-h, $ratio-compact, $ratio-compact-w) {
+  aspect-ratio: $ratio-wide;
+  @media (min-aspect-ratio: $ratio-wide) {
+    width: auto;
+    height: $ratio-wide-h;
+  }
+  @media (min-aspect-ratio: $ratio-compact) and (max-aspect-ratio: $ratio-wide) {
+    width: $ratio-compact-w;
+    height: auto;
+  }
+  @media (max-aspect-ratio: $ratio-compact) {
+    width: $ratio-compact-w;
+    height: auto;
+    aspect-ratio: $ratio-compact;
+  }
+}

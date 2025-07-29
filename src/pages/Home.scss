@@ -1,23 +1,7 @@
-@mixin useResponsiveAspr($ratio-wide, $ratio-wide-h, $ratio-compact, $ratio-compact-w) {
-  aspect-ratio: $ratio-wide;
-  @media (min-aspect-ratio: $ratio-wide) {
-    width: auto;
-    height: $ratio-wide-h;
-  }
-  @media (min-aspect-ratio: $ratio-compact) and (max-aspect-ratio: $ratio-wide) {
-    width: $ratio-compact-w;
-    height: auto;
-    font-size: 2.7vw;
-  }
-  @media (max-aspect-ratio: $ratio-compact) {
-    width: $ratio-compact-w;
-    height: auto;
-    aspect-ratio: $ratio-compact;
-    font-size: 2.7vw;
-  }
-}
+@use 'sass:math';
+@use '../styles/lib';
 
-$channels-height: 73%;
+$buttons-height: 5.4rem;
 
 :root {
   --menu-border: 0.09em solid #34beed;
@@ -30,7 +14,7 @@ $channels-height: 73%;
   position: absolute;
   top: 0;
   width: 100%;
-  height: $channels-height;
+  height: calc(100% - $buttons-height);
   filter: drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.2));
   background: url('/menu-bg.png') repeat;
   background-size: auto 0.176rem;
@@ -49,13 +33,13 @@ $channels-height: 73%;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(3, 33.3333%);
     gap: 0;
-    align-items: center;
+    align-items: start;
     justify-items: center;
   }
 }
 .channel {
   position: relative;
-  @include useResponsiveAspr(16/9, 100%, 4/3, 100%);
+  @include lib.useDynamicAspr(math.div(16, 9), 100%, math.div(4, 3), 100%);
   &::before,
   &::after {
     content: '';
@@ -108,9 +92,9 @@ $channels-height: 73%;
 }
 .navs {
   position: absolute;
-  top: $channels-height;
+  top: calc(100% - $buttons-height);
   width: 100%;
-  height: calc(100% - $channels-height);
+  height: $buttons-height;
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -199,16 +183,18 @@ $channels-height: 73%;
 
     display: flex;
     align-items: start;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 0.8em;
 
-    padding: 0.68em 6.6em 0;
+    padding: 0.68em 0 0;
   }
 
   .button {
+    height: 72%;
     border: var(--menu-border);
   }
 
-  @include useResponsiveAspr(16.7/9, 96vh, 4/3, 96vw);
+  @include lib.useDynamicAspr(math.div(16.7, 9), 96vh, math.div(4, 3), 96vw);
 }
 
 @keyframes test {
